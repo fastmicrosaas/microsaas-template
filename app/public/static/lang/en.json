@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Build your SaaS in minutes",
+    "subtitle": "Launch digital products quickly with our developer- and entrepreneur-ready platform.",
+    "cta_dashboard": "🚀 Go to Dashboard",
+    "cta_plans": "See Plans"
+  },
+  "features": {
+    "title": "Main Features",
+    "description": "Everything you need to launch your SaaS quickly and effectively.",
+    "card1_title": "Fast Development",
+    "card1_desc": "Build MVPs in record time with a modern architecture based on FastAPI, HTMX, and Jinja2.",
+    "card2_title": "Results Oriented",
+    "card2_desc": "Tools designed to validate ideas quickly and help you generate real revenue.",
+    "card3_title": "Modular & Extensible",
+    "card3_desc": "Expand your SaaS with modules for payments, subscriptions, analytics, and more."
+  },
+  "pricing": {
+    "title": "Plans & Pricing",
+    "description": "Choose the plan that best fits your business and start today.",
+    "starter": "Starter 🚀",
+    "pro": "Pro 💼",
+    "enterprise": "Enterprise 🏢",
+    "per_quarter": "/quarter",
+    "start_btn": "Get Started",
+    "choose_pro_btn": "Choose Pro",
+    "contact_btn": "Contact Us",
+    "soon": "Commng soon"
+  },
+    "contact": {
+    "title": "Contact Us",
+    "description": "Have questions or need info? Leave us a message and we'll reply soon.",
+    "form": {
+      "name_label": "Your name",
+      "name_placeholder": "Enter your name",
+      "email_label": "Your email",
+      "email_placeholder": "example@email.com",
+      "message_label": "Your message",
+      "message_placeholder": "Write your message here...",
+      "submit": "✉️ Send Message",
+      "success": "Message sent successfully! ✅",
+      "error": "Error sending the message. Please try again later. ❌"
+    }
+  },
+  "footer": {
+    "brand": "Build and launch your SaaS in minutes with our modern, scalable platform.",
+    "links": "Links",
+    "resources": "Resources",
+    "legal": "Policies and conditions",
+    "cookies": "Cookie Policy",
+    "privacy" : "Privacy",
+    "terms": "Terms and Conditions",
+    "dpa":"DPA Agreements",
+    "follow": "Follow Us",
+    "rights": "All rights reserved."
+  }
+}

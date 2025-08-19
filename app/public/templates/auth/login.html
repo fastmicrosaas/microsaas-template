@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %} 
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="relative min-h-screen flex items-center justify-center bg-gray-50">
+  
+  <!-- Fondo de textura -->
+  <div class="absolute inset-0 bg-[url('/static/img/noise22.png')] bg-repeat  "></div>
+
+  <!-- Tarjeta de login -->
+  <div class="relative max-w-md w-full bg-white shadow-xl rounded-lg p-8 z-10">
+    <h1 class="text-3xl font-extrabold mb-6 text-center text-blue-700">Iniciar Sesión</h1>
+
+    {% if error %}
+    <p class="text-red-500 text-center mb-4 font-medium">{{ error }}</p>
+    {% endif %}
+
+    <form method="post" action="/auth/login" id="login-form" class="space-y-5">
+      <input
+        type="email"
+        name="email"
+        placeholder="Correo electrónico"
+        required
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Contraseña"
+        required
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      />
+      <input type="hidden" name="g_recaptcha_response" id="g_recaptcha_response">
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition"
+      >
+        Entrar
+      </button>
+    </form>
+
+    <p class="text-center text-gray-500 text-sm mt-6">
+      ¿No tienes una cuenta?
+      <a href="/auth/register" class="text-blue-600 hover:underline font-medium">Regístrate aquí</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+<div class="overflow-y-auto max-h-[400px] border border-gray-200 rounded-xl shadow-md">
+  <table class="min-w-full divide-y divide-gray-200 text-sm">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase tracking-wider">ID</th>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase tracking-wider">Plan</th>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase tracking-wider">Precio</th>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase tracking-wider">Estado</th>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600 uppercase tracking-wider">Referencia</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-100">
+      {% for order in orders %}
+      <tr class="hover:bg-gray-50 transition">
+        <td class="px-6 py-4 font-medium text-gray-700">{{ order.id }}</td>
+        <td class="px-6 py-4 text-gray-700">{{ order.plan.name }}</td>
+        <td class="px-6 py-4 text-gray-700">S/ {{ order.plan.price / 100 }}</td>
+        <td class="px-6 py-4">
+          {% if order.status == "PAID" %}
+            <span class="inline-flex items-center px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">Pagado</span>
+          {% elif order.status == "PENDING" %}
+            <span class="inline-flex items-center px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-100 rounded-full">Pendiente</span>
+          {% else %}
+            <span class="inline-flex items-center px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 rounded-full">{{ order.status }}</span>
+          {% endif %}
+        </td>
+        <td class="px-6 py-4 text-gray-500">{{ order.payment_reference or "-" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- Paginación -->
+<div class="flex justify-center mt-4 space-x-2">
+  {% if page > 1 %}
+    <a href="?page={{ page - 1 }}" class="px-3 py-1 rounded border bg-gray-100 hover:bg-gray-200">Anterior</a>
+  {% endif %}
+  <span class="px-3 py-1 rounded border bg-blue-100 text-black">{{ page }}</span>
+  {% if page < total_pages %}
+    <a href="?page={{ page + 1 }}" class="px-3 py-1 rounded border bg-gray-100 hover:bg-gray-200">Siguiente</a>
+  {% endif %}
+  <span class="px-3 py-1 rounded border bg-gray-200 text-gray-600">de {{ total_pages }}</span>
+</div>
+

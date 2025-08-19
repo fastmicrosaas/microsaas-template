@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "features": "Características",
+    "pricing": "Precios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Construye tu SaaS en minutos",
+    "subtitle": "Lanza productos digitales rápidamente con nuestra plataforma lista para desarrolladores y emprendedores.",
+    "cta_dashboard": "🚀 Ir al Dashboard",
+    "cta_plans": "Ver Planes"
+  },
+  "features": {
+    "title": "Características Principales",
+    "description": "Todo lo que necesitas para lanzar tu SaaS de manera rápida y efectiva.",
+    "card1_title": "Desarrollo Rápido",
+    "card1_desc": "Crea MVPs en tiempo récord con una arquitectura moderna basada en FastAPI, HTMX y Jinja2.",
+    "card2_title": "Enfoque en Resultados",
+    "card2_desc": "Herramientas diseñadas para validar ideas rápidamente y ayudarte a generar ingresos reales.",
+    "card3_title": "Modular y Extensible",
+    "card3_desc": "Amplía tu SaaS con módulos para pagos, suscripciones, analíticas y más sin complicaciones."
+  },
+  "pricing": {
+    "title": "Planes y Precios",
+    "description": "Elige el plan que mejor se adapte a tu negocio y comienza hoy mismo.",
+    "starter": "Starter 🚀",
+    "pro": "Pro 💼",
+    "enterprise": "Enterprise 🏢",
+    "per_quarter": "/trimestre",
+    "start_btn": "Empezar",
+    "choose_pro_btn": "Elegir Pro",
+    "contact_btn": "Contáctanos",
+    "soon": "Próximamente"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "description": "¿Tienes alguna duda o quieres más información? Déjanos tu mensaje y te responderemos a la brevedad.",
+    "form": {
+      "name_label": "Tu nombre",
+      "name_placeholder": "Escribe tu nombre",
+      "email_label": "Tu correo",
+      "email_placeholder": "ejemplo@correo.com",
+      "message_label": "Tu mensaje",
+      "message_placeholder": "Escribe tu mensaje aquí...",
+      "submit": "✉️ Enviar mensaje",
+      "success": "¡Mensaje enviado con éxito! ✅",
+      "error": "Error al enviar el mensaje. Inténtalo más tarde. ❌"
+      }
+  },
+  "footer": {
+    "brand": "Construye y lanza tu SaaS en minutos con nuestra plataforma moderna y escalable.",
+    "links": "Enlaces",
+    "resources": "Recursos",
+    "legal": "Políticas y condiciones",
+    "cookies": "Política de Cookies",
+    "privacy" : "Privacidad",
+    "terms": "Términos y condiciones",
+    "dpa":"Acuerdos DPA",
+    "follow": "Síguenos",
+    "rights": "Todos los derechos reservados."
+  }
+}

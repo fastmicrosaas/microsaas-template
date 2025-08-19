@@ -1,0 +1,505 @@
+{% extends "layouts/base.html" %} 
+<title>{% block title %}SaaS Template{% endblock %}</title>
+{% block content %}
+    <!-- Language Switcher -->
+    <div class="fixed top-4 right-4 z-50">
+      <div
+        class="flex items-center gap-2 bg-gray-200 px-3 py-1 rounded-lg shadow cursor-pointer hover:bg-gray-300 transition"
+        onclick="toggleLanguage()"
+      >
+        <span id="lang-label" class="text-sm font-semibold">ES</span>
+      </div>
+    </div>
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-40">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold text-indigo-600"
+            >⚡ SaaS Template</span
+          >
+        </div>
+        <nav class="flex gap-6 text-gray-700">
+          <a
+            href="#features"
+            class="hover:text-indigo-600 transition"
+            data-translate="nav.features"
+          ></a>
+          <a
+            href="#pricing"
+            class="hover:text-indigo-600 transition"
+            data-translate="nav.pricing"
+          ></a>
+          <a
+            href="#contact"
+            class="hover:text-indigo-600 transition"
+            data-translate="nav.contact"
+          ></a>
+        </nav>
+        <div>
+          {% if not request.cookies.get('access_token') and not
+          request.cookies.get('refresh_token') %}
+          <a
+            href="/auth/login"
+            class="bg-indigo-700 text-white px-4 py-2 rounded hover:bg-indigo-900 transition"
+          >
+            Login
+          </a>
+          {% else %}
+          <a
+            href="/dashboard"
+            class="bg-indigo-700 text-white px-4 py-2 rounded hover:bg-indigo-900 transition"
+          >
+            Dashboard
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative bg-white text-gray-900 py-24 px-6 overflow-hidden">
+      <div
+        class="absolute -left-24 top-1/3 transform -rotate-45 w-40 h-40 bg-indigo-100 rounded-md z-0"
+      ></div>
+      <div
+        class="absolute -right-32 top-16 w-64 h-64 bg-indigo-200 rounded-full blur-2xl opacity-30 z-0"
+      ></div>
+
+      <!-- Contenido centrado -->
+      <div class="max-w-7xl mx-auto text-center relative z-10">
+        <h1
+          class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6"
+        >
+          <span data-translate="hero.title"></span>
+        </h1>
+        <p
+          class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto"
+          data-translate="hero.subtitle"
+        ></p>
+
+        <div
+          class="flex flex-col sm:flex-row justify-center items-center gap-4"
+        >
+          <a
+            href="/dashboard"
+            class="bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-indigo-900 transition"
+          >
+            <span data-translate="hero.cta_dashboard"></span>
+          </a>
+          <a
+            href="#pricing"
+            class="text-indigo-700 border border-black px-6 py-3 rounded-lg hover:bg-indigo hover:text-black transition"
+          >
+            <span data-translate="hero.cta_plans"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Textura sutil -->
+      <div
+        class="absolute inset-0 bg-[url('/static/img/noise22.png')] bg-repeat opacity-2 pointer-events-none"
+      ></div>
+    </section>
+
+    <!-- Características -->
+    <section
+      id="features"
+      class="py-20 px-6 bg-gray-50 relative overflow-hidden"
+    >
+      <div
+        class="absolute bottom-0 -right-24 w-48 h-48 bg-indigo-100 rotate-45 rounded-md opacity-20 z-0"
+      ></div>
+      <div class="max-w-6xl mx-auto text-center mb-12">
+        <h2
+          class="text-4xl font-extrabold text-gray-800"
+          data-translate="features.title"
+        ></h2>
+        <p
+          class="text-gray-600 mt-4 text-lg"
+          data-translate="features.description"
+        ></p>
+      </div>
+
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div
+          class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 text-center"
+        >
+          <div class="flex justify-center mb-4">
+            <div class="bg-indigo-100 p-4 rounded-full">
+              <span class="text-3xl">⚡</span>
+            </div>
+          </div>
+          <h3
+            class="text-xl font-bold text-gray-800 mb-2"
+            data-translate="features.card1_title"
+          ></h3>
+          <p class="text-gray-600" data-translate="features.card1_desc"></p>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 text-center"
+        >
+          <div class="flex justify-center mb-4">
+            <div class="bg-green-100 p-4 rounded-full">
+              <span class="text-3xl">🎯</span>
+            </div>
+          </div>
+          <h3
+            class="text-xl font-bold text-gray-800 mb-2"
+            data-translate="features.card2_title"
+          ></h3>
+          <p class="text-gray-600" data-translate="features.card2_desc"></p>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 text-center"
+        >
+          <div class="flex justify-center mb-4">
+            <div class="bg-yellow-100 p-4 rounded-full">
+              <span class="text-3xl">🧩</span>
+            </div>
+          </div>
+          <h3
+            class="text-xl font-bold text-gray-800 mb-2"
+            data-translate="features.card3_title"
+          ></h3>
+          <p class="text-gray-600" data-translate="features.card3_desc"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Precios -->
+    <section
+      id="pricing"
+      class="py-24 px-6 bg-white text-center relative overflow-hidden"
+    >
+      <div
+        class="absolute bottom-0 -left-24 w-48 h-48 bg-indigo-100 rotate-45 rounded-md opacity-20 z-0"
+      ></div>
+      <div class="max-w-4xl mx-auto mb-12">
+        <h2
+          class="text-4xl font-extrabold text-gray-800"
+          data-translate="pricing.title"
+        ></h2>
+        <p
+          class="text-gray-600 mt-4 text-lg"
+          data-translate="pricing.description"
+        ></p>
+      </div>
+
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <!-- Plan Starter -->
+        <div
+          class="bg-white border border-gray-200 rounded-xl p-8 shadow hover:shadow-xl transition transform hover:-translate-y-2"
+        >
+          <h3
+            class="text-xl font-semibold mb-2 text-gray-800"
+            data-translate="pricing.starter"
+          ></h3>
+          <p class="text-4xl font-extrabold mb-4 text-indigo-600">
+            S/ 99<span
+              class="text-base font-medium text-gray-500"
+              data-translate="pricing.per_quarter"
+            ></span>
+          </p>
+          <ul class="mb-6 text-gray-600 space-y-2 text-left">
+            <li>✔️ Dashboard preconstruido</li>
+            <li>✔️ CRUD base funcional</li>
+            <li>✔️ Hosting local</li>
+          </ul>
+          <a
+            href="/payments/checkout?plan=starter"
+            class="block w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
+            data-translate="pricing.start_btn"
+          ></a>
+        </div>
+
+        <!-- Plan Pro -->
+        <div
+          class="relative bg-indigo-600 text-white rounded-xl p-8 shadow-2xl transform scale-105 hover:scale-110 transition"
+        >
+          <div
+            class="absolute top-0 right-0 bg-yellow-400 text-gray-800 text-xl font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg"
+            data-translate="pricing.most_popular"
+          >
+            -80%
+          </div>
+          <h3
+            class="text-xl font-semibold mb-2"
+            data-translate="pricing.pro"
+          ></h3>
+          <p class="text-4xl font-extrabold mb-4">
+            S/ 249<span
+              class="text-base font-medium text-indigo-100"
+              data-translate="pricing.per_quarter"
+            ></span>
+          </p>
+          <ul class="mb-6 space-y-2 text-left text-indigo-100">
+            <li>✔️ Todo en Starter</li>
+            <li>✔️ Integración con APIs externas</li>
+            <li>✔️ Deploy en la nube</li>
+          </ul>
+          <a
+            href="/payments/checkout?plan=pro"
+            class="block w-full bg-white text-indigo-700 py-2 rounded-lg font-bold hover:bg-gray-100 transition"
+            data-translate="pricing.choose_pro_btn"
+          ></a>
+        </div>
+
+        <!-- Plan Enterprise -->
+        <div
+          class="bg-white border border-gray-200 rounded-xl p-8 shadow hover:shadow-xl transition transform hover:-translate-y-2"
+        >
+          <h3
+            class="text-xl font-semibold mb-2 text-gray-800"
+            data-translate="pricing.enterprise"
+          ></h3>
+          <p class="text-4xl font-extrabold mb-4 text-indigo-600">A medida</p>
+          <ul class="mb-6 text-gray-600 space-y-2 text-left">
+            <li>✔️ Funcionalidades personalizadas</li>
+            <li>✔️ Soporte dedicado</li>
+            <li>✔️ SLA garantizado</li>
+          </ul>
+          <a
+            href="#contact"
+            class="block w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
+            data-translate="pricing.contact_btn"
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section
+      id="contact"
+      class="py-24 px-6 bg-gradient-to-b from-gray-50 to-white"
+    >
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2
+          class="text-4xl font-extrabold text-gray-800 mb-4"
+          data-translate="contact.title"
+        >
+          Contáctanos
+        </h2>
+        <p
+          class="text-gray-600 mt-4 text-lg leading-relaxed"
+          data-translate="contact.description"
+        >
+          ¿Tienes alguna duda o quieres más información? Déjanos tu mensaje y te
+          responderemos a la brevedad.
+        </p>
+      </div>
+
+      <div
+        class="max-w-2xl mx-auto bg-white p-10 rounded-2xl shadow-lg border border-gray-100 relative"
+      >
+        <!-- Loader -->
+        <div
+          id="contact-loader"
+          class="hidden absolute inset-0 flex items-center justify-center rounded-2xl z-20 bg-black bg-opacity-50"
+        >
+          <div class="spinner"></div>
+        </div>
+        
+        <form
+          id="contact-form"
+          method="post"
+          action="/mailing/contact"
+          class="space-y-6"
+        >
+          <!-- Nombre -->
+          <div>
+            <label
+              for="name"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              data-translate="contact.form.name_label"
+            ></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              data-placeholder="contact.form.name_placeholder"
+              required
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
+            />
+          </div>
+
+          <!-- Correo -->
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              data-translate="contact.form.email_label"
+            ></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              data-placeholder="contact.form.email_placeholder"
+              required
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
+            />
+          </div>
+
+          <!-- Mensaje -->
+          <div>
+            <label
+              for="message"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              data-translate="contact.form.message_label"
+            ></label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              data-placeholder="contact.form.message_placeholder"
+              required
+              class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
+            ></textarea>
+          </div>
+          <input
+            type="hidden"
+            name="g_recaptcha_response_contact"
+            id="g_recaptcha_response_contact"
+          />
+          <!-- Botón -->
+          <button
+            type="submit"
+            class="w-full bg-gradient-to-r from-indigo-600 to-indigo-500 text-white py-3 rounded-lg font-semibold shadow hover:from-indigo-700 hover:to-indigo-600 transition transform hover:scale-[1.02]"
+            data-translate="contact.form.submit"
+          ></button>
+
+          <!-- Resultado -->
+          <div
+            id="contact-result"
+            class="text-sm mt-2 text-center font-medium"
+          ></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-6 relative">
+      <div
+        class="absolute inset-0 bg-[url('/static/img/noise.png')] bg-repeat opacity-4 pointer-events-none"
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10 text-center md:text-left"
+      >
+        <div>
+          <h3 class="text-xl font-bold text-white mb-3">⚡ SaaS Template</h3>
+          <p class="text-sm text-gray-400" data-translate="footer.brand"></p>
+        </div>
+        <div>
+          <h4
+            class="text-white font-semibold mb-3"
+            data-translate="footer.links"
+          ></h4>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#features"
+                class="hover:text-white transition"
+                data-translate="nav.features"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#pricing"
+                class="hover:text-white transition"
+                data-translate="nav.pricing"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="hover:text-white transition"
+                data-translate="nav.contact"
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4
+            class="text-white font-semibold mb-3"
+            data-translate="footer.legal"
+          ></h4>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="/cookies"
+                target="_blank"
+                class="hover:text-white transition"
+                data-translate="footer.cookies"
+                >Política de Cookies</a
+              >
+            </li>
+            <li>
+              <a
+                href="/privacy"
+                target="_blank"
+                class="hover:text-white transition"
+                data-translate="footer.privacy"
+                >Privacidad</a
+              >
+            </li>
+            <li>
+              <a
+                href="/terms"
+                target="_blank"
+                class="hover:text-white transition"
+                data-translate="footer.terms"
+                >Términos y Condiciones</a
+              >
+            </li>
+            <li>
+              <a
+                href="/data-processing-agreement"
+                target="_blank"
+                class="hover:text-white transition"
+                data-translate="footer.dpa"
+                >Acuerdos DPA</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4
+            class="text-white font-semibold mb-3"
+            data-translate="footer.follow"
+          ></h4>
+          <div class="flex justify-center md:justify-start space-x-4">
+            <a href="#" class="hover:text-indigo-500 transition">🌐</a>
+            <a href="#" class="hover:text-indigo-400 transition">🐦</a>
+            <a href="#" class="hover:text-pink-500 transition">📸</a>
+            <a href="#" class="hover:text-indigo-600 transition">💼</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center">
+        <button
+          id="cookie-settings-btn"
+          class="text-sm text-gray-400 hover:text-white transition underline"
+        >
+          Cambiar preferencias de cookies
+        </button>
+      </div>
+
+      <div
+        class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-500"
+      >
+        © {{ year or "2025" }} SaaS Template.
+        <span data-translate="footer.rights"></span>
+      </div>
+      {% include "home/legal/components/cookie_banner.html" %}
+    </footer>
+    <script src="/static/js/lang.js"></script>
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,147 @@
+{% extends "layouts/base.html" %} {% block content %}
+<title>{% block title %}Política de Cookies{% endblock %}</title>
+
+<section class="max-w-4xl mx-auto px-4 py-16 text-gray-800">
+  <h1 class="text-3xl font-bold mb-6">Política de Cookies</h1>
+
+  <p class="mb-4">
+    En este sitio web utilizamos cookies y tecnologías similares para garantizar
+    el correcto funcionamiento del sitio, mejorar la experiencia del usuario,
+    personalizar el contenido y los anuncios, proporcionar funciones de redes
+    sociales y analizar el tráfico. Esta política explica qué son las cookies,
+    cómo las usamos y tus opciones al respecto.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">1. ¿Qué son las cookies?</h2>
+  <p class="mb-4">
+    Las cookies son pequeños archivos de texto que se almacenan en tu navegador
+    o dispositivo cuando visitas un sitio web. Permiten reconocer tu dispositivo
+    y recordar tus preferencias o acciones anteriores.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    2. ¿Qué tipos de cookies utilizamos?
+  </h2>
+  <p class="mb-2">Usamos las siguientes categorías de cookies:</p>
+  <ul class="list-disc list-inside mb-4 space-y-1">
+    <li>
+      <strong>Cookies estrictamente necesarias:</strong> Permiten la navegación
+      por el sitio web y el uso de funciones esenciales como el acceso a áreas
+      seguras. Estas cookies no requieren tu consentimiento.
+    </li>
+    <li>
+      <strong>Cookies de rendimiento:</strong> Recogen información sobre cómo
+      los usuarios utilizan el sitio, por ejemplo, qué páginas se visitan con
+      más frecuencia. Nos ayudan a mejorar el rendimiento del sitio.
+    </li>
+    <li>
+      <strong>Cookies de funcionalidad:</strong> Permiten recordar tus
+      preferencias, como el idioma o la región en la que te encuentras.
+    </li>
+    <li>
+      <strong>Cookies de publicidad y seguimiento:</strong> Se utilizan para
+      mostrar anuncios relevantes y personalizados en función de tu
+      comportamiento de navegación.
+    </li>
+    <li>
+      <strong>Cookies de terceros:</strong> Algunas cookies son establecidas por
+      servicios de terceros que utilizamos, como herramientas de análisis (por
+      ejemplo, Google Analytics) o botones sociales.
+    </li>
+  </ul>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    3. Base legal para el uso de cookies
+  </h2>
+  <p class="mb-4">
+    Las cookies necesarias se basan en nuestro interés legítimo en proporcionar
+    un sitio funcional. Para todas las demás cookies, solicitamos tu
+    consentimiento explícito al ingresar al sitio mediante el banner de cookies.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    4. ¿Cómo puedes gestionar las cookies?
+  </h2>
+  <p class="mb-4">
+    Puedes gestionar tus preferencias de cookies en cualquier momento desde el
+    <strong>gestor de cookies</strong> del sitio (próximamente disponible).
+    También puedes configurar tu navegador para aceptar o rechazar cookies. Cada
+    navegador tiene sus propias instrucciones para hacerlo:
+  </p>
+  <ul class="list-disc list-inside mb-4">
+    <li>
+      Google Chrome:
+      <a
+        href="https://support.google.com/chrome/answer/95647"
+        class="text-blue-600 underline"
+        target="_blank"
+        >Ver instrucciones</a
+      >
+    </li>
+    <li>
+      Mozilla Firefox:
+      <a
+        href="https://support.mozilla.org/es/kb/proteccion-antirrastreo-mejorada-en-firefox"
+        class="text-blue-600 underline"
+        target="_blank"
+        >Ver instrucciones</a
+      >
+    </li>
+    <li>
+      Safari:
+      <a
+        href="https://support.apple.com/es-es/HT201265"
+        class="text-blue-600 underline"
+        target="_blank"
+        >Ver instrucciones</a
+      >
+    </li>
+    <li>
+      Microsoft Edge:
+      <a
+        href="https://support.microsoft.com/es-es/help/4027947/microsoft-edge-delete-cookies"
+        class="text-blue-600 underline"
+        target="_blank"
+        >Ver instrucciones</a
+      >
+    </li>
+  </ul>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    5. ¿Qué sucede si rechazas las cookies?
+  </h2>
+  <p class="mb-4">
+    Puedes seguir utilizando el sitio incluso si rechazas todas las cookies no
+    esenciales. Sin embargo, algunas funciones pueden no estar disponibles o no
+    funcionar correctamente.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    6. Transferencias internacionales de datos
+  </h2>
+  <p class="mb-4">
+    Algunas cookies de terceros pueden implicar transferencias de datos
+    personales fuera del Espacio Económico Europeo. Nos aseguramos de que dichas
+    transferencias cumplan con las garantías adecuadas, como cláusulas
+    contractuales tipo aprobadas por la Comisión Europea.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    7. Cambios en esta política de cookies
+  </h2>
+  <p class="mb-4">
+    Podemos actualizar esta política para reflejar cambios en nuestras prácticas
+    o en la legislación aplicable. Te recomendamos revisarla periódicamente.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">8. Contacto</h2>
+  <p class="mb-4">
+    Si tienes preguntas sobre nuestra política de cookies, puedes contactarnos
+    en <a href="/#form" class="text-blue-600 underline">/contact</a>.
+  </p>
+
+  <p class="text-sm text-gray-500 mt-10">
+    Última actualización: {{ datetime.utcnow().strftime('%d/%m/%Y') }}
+  </p>
+</section>
+{% endblock %}

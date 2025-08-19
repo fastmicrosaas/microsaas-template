@@ -1,0 +1,35 @@
+# Core
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+requests
+slowapi==0.1.6
+
+# Templates
+jinja2==3.1.4
+
+# Seguridad y JWT
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt<4.1.0
+
+# Base de datos (SQLite y PostgreSQL)
+sqlalchemy==2.0.30
+psycopg2-binary==2.9.9
+
+# Validaciones
+pydantic==2.7.3
+pydantic-settings>=2.0
+
+# Middleware y utilidades
+anyio==4.4.0
+starlette==0.37.2
+
+# Manejo de formularios
+python-multipart==0.0.9
+
+# Variables de entorno
+python-dotenv==1.0.1
+
+# Migraciones
+alembic==1.13.1
+

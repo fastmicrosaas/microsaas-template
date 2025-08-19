@@ -1,0 +1,56 @@
+{% block content %}
+<section>
+  <div
+    id="cookie-overlay"
+    class="fixed inset-0 bg-black/70 z-40"
+    onclick="closeBannerFromOverlay()"
+  ></div>
+  <div
+    id="cookie-banner"
+    class="fixed inset-x-0 bottom-0 bg-gray-900 text-gray-100 border-t border-gray-700 shadow-lg z-50 px-8 py-10 animate-slide-up"
+  >
+    <div
+      class="max-w-5xl mx-auto flex flex-col items-start justify-between gap-6 md:gap-4 md:flex-row md:items-center"
+    >
+      <p class="text-base md:text-lg leading-relaxed max-w-3xl">
+        Usamos cookies para habilitar funciones esenciales, analizar el tráfico
+        y personalizar tu experiencia en el sitio. Puedes aceptar todas o
+        rechazarlas. Algunas cookies son estrictamente necesarias y no se pueden
+        desactivar. Consulta nuestra
+        <a
+          href="/cookies"
+          target="_blank"
+          class="text-blue-400 hover:text-blue-300 underline transition duration-150"
+          >política de cookies</a
+        >
+        y nuestra
+        <a
+          href="/privacy"
+          target="_blank"
+          class="text-blue-400 hover:text-blue-300 underline transition duration-150"
+          >política de privacidad</a
+        >
+        para más información.
+      </p>
+
+      <div
+        class="flex flex-wrap items-center gap-3 md:gap-4 shrink-0 mt-2 md:mt-0 px-8"
+      >
+        <button
+          onclick="rejectCookies()"
+          class="px-5 py-3 text-base font-medium text-gray-300 hover:text-white border border-gray-600 rounded-md transition duration-150"
+        >
+          Rechazar
+        </button>
+        <button
+          onclick="acceptCookies()"
+          class="px-5 py-3 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-md transition duration-150"
+        >
+          Aceptar todas
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/static/js/cookie_banner.js"></script>
+{% endblock %}

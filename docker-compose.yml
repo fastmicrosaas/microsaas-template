@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - ENVIRONMENT=development
+      - DATABASE_URL=postgresql+psycopg2://user:password@db:5432/mydb
+
+  db:
+    image: postgres:14
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

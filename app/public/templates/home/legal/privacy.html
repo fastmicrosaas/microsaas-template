@@ -1,0 +1,162 @@
+{% extends "layouts/base.html" %} 
+<title>{% block title %}Política de Privacidad{% endblock %}</title>
+{% block content %}
+
+<section class="max-w-4xl mx-auto px-4 py-16 text-gray-800">
+  <h1 class="text-3xl font-bold mb-6">Política de Privacidad</h1>
+
+  <p class="mb-4">
+    En {{ legal.company }} (en adelante, “la empresa”), nos comprometemos a
+    proteger y respetar tu privacidad. Esta política de privacidad explica cómo
+    recopilamos, usamos, compartimos y protegemos tus datos personales conforme
+    al Reglamento General de Protección de Datos (RGPD) y demás normativas
+    aplicables.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    1. Responsable del tratamiento
+  </h2>
+  <p class="mb-4">
+    El responsable del tratamiento de tus datos personales es {{ legal.company
+    }}, con domicilio en {{ legal.address }}, y correo de contacto:
+    <a href="mailto:{{ legal.contact }}">{{ legal.contact }}</a>.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    2. Datos personales que recopilamos
+  </h2>
+  <p class="mb-2">
+    Recopilamos los siguientes datos, según el uso del servicio:
+  </p>
+  <ul class="list-disc list-inside mb-4">
+    <li>
+      Información de contacto: nombre, correo electrónico, número de teléfono
+    </li>
+    <li>
+      Datos de uso: direcciones IP, tipo de navegador, páginas visitadas, tiempo
+      de navegación
+    </li>
+    <li>
+      Datos financieros: en caso de suscripciones de pago (procesados por
+      terceros seguros)
+    </li>
+    <li>
+      Contenido generado por el usuario, si aplica (comentarios, formularios,
+      etc.)
+    </li>
+  </ul>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    3. Finalidades del tratamiento
+  </h2>
+  <p class="mb-4">Utilizamos tus datos personales para:</p>
+  <ul class="list-disc list-inside mb-4">
+    <li>Proporcionar, mantener y mejorar nuestros servicios</li>
+    <li>Procesar pagos y gestionar suscripciones</li>
+    <li>
+      Enviar comunicaciones operativas o promocionales (con tu consentimiento)
+    </li>
+    <li>Cumplir con obligaciones legales o regulatorias</li>
+    <li>Garantizar la seguridad del sistema y prevenir fraudes</li>
+  </ul>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    4. Base legal para el tratamiento
+  </h2>
+  <p class="mb-4">
+    Tratamos tus datos basándonos en al menos una de las siguientes bases
+    legales: ejecución de un contrato, consentimiento explícito, cumplimiento de
+    una obligación legal o interés legítimo.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">5. Conservación de los datos</h2>
+  <p class="mb-4">
+    Conservamos tus datos solo durante el tiempo necesario para cumplir las
+    finalidades descritas, o según lo exija la ley. Posteriormente, serán
+    eliminados o anonimizados de forma segura.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">6. Compartición de datos</h2>
+  <p class="mb-4">
+    Podemos compartir datos con terceros solo cuando sea necesario, como:
+  </p>
+  <ul class="list-disc list-inside mb-4">
+    <li>Procesadores de pagos como Stripe e Izipay</li>
+    <li>Servicios de alojamiento y servidores como Fly.io o Render</li>
+    <li>Servicios de análisis como Plausible Analytics</li>
+    <li>Proveedores de correo como Mailgun</li>
+    <li>Autoridades legales, si corresponde</li>
+  </ul>
+  <p class="mb-4">
+    Todos ellos están sujetos a contratos que garantizan la seguridad y
+    confidencialidad de tus datos.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">
+    7. Transferencias internacionales
+  </h2>
+  <p class="mb-4">
+    Si transferimos tus datos fuera del Espacio Económico Europeo (EEE), nos
+    aseguraremos de que estén protegidos mediante cláusulas contractuales
+    estándar u otros mecanismos legales reconocidos.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">8. Seguridad de los datos</h2>
+  <p class="mb-4">
+    Implementamos medidas técnicas y organizativas apropiadas para proteger tus
+    datos personales contra accesos no autorizados, pérdida o destrucción. Estas
+    incluyen cifrado, control de acceso, firewalls y revisiones periódicas de
+    seguridad.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">9. Tus derechos</h2>
+  <p class="mb-2">Tienes derecho a:</p>
+  <ul class="list-disc list-inside mb-4">
+    <li>Acceder a tus datos personales</li>
+    <li>Rectificar datos inexactos o incompletos</li>
+    <li>Solicitar la eliminación de tus datos ("derecho al olvido")</li>
+    <li>Restringir u oponerte al tratamiento</li>
+    <li>Portar tus datos a otro proveedor</li>
+    <li>Retirar tu consentimiento en cualquier momento</li>
+  </ul>
+  <p class="mb-4">
+    Puedes ejercer estos derechos escribiéndonos a
+    <a href="mailto:{{ legal.contact }}">{{ legal.contact }}</a>. También puedes
+    retirar tu consentimiento desde tu perfil de usuario. En caso de desacuerdo,
+    puedes presentar una reclamación ante la autoridad de protección de datos de
+    tu país.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">10. Cambios en esta política</h2>
+  <p class="mb-4">
+    Nos reservamos el derecho de modificar esta política de privacidad en
+    cualquier momento. Te notificaremos cualquier cambio importante por medios
+    razonables (correo electrónico o banner en el sitio).
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">11. Decisiones automatizadas</h2>
+  <p class="mb-4">
+    No realizamos decisiones automatizadas ni perfilado que produzcan efectos
+    legales o significativamente similares sobre ti.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">12. Menores de edad</h2>
+  <p class="mb-4">
+    Nuestros servicios no están dirigidos a menores de 14 años. No recopilamos
+    conscientemente datos personales de menores. Si descubrimos que se han
+    recopilado datos de un menor sin el consentimiento de su tutor legal, los
+    eliminaremos de inmediato.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">13. Uso de cookies</h2>
+  <p class="mb-4">
+    Este sitio utiliza cookies para mejorar tu experiencia de navegación y
+    ofrecer funcionalidades esenciales. Para más detalles, consulta nuestra
+    <a href="/cookies" class="text-blue-600 underline">Política de Cookies</a>.
+  </p>
+
+  <p class="text-sm text-gray-500 mt-10">
+    Última actualización: {{ datetime.utcnow().strftime('%d/%m/%Y') }}
+  </p>
+</section>
+{% endblock %}

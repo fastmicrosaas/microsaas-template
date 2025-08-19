@@ -1,0 +1,136 @@
+{% extends "layouts/base.html" %} 
+{% block title %}Registro{% endblock %} {%
+block content %}
+<div class="relative min-h-screen flex items-center justify-center bg-gray-50">
+  <div class="relative max-w-md w-full bg-white shadow-xl rounded-lg p-8 z-10">
+    <h1 class="text-3xl font-extrabold mb-6 text-center text-green-700">
+      Crear Cuenta
+    </h1>
+
+    {% if error %}
+    <p class="text-red-500 text-center mb-4 font-medium">{{ error }}</p>
+    {% endif %}
+
+    <form id="register-form" method="post" action="/auth/register" class="space-y-4">
+      <input
+        type="email"
+        name="email"
+        placeholder="Correo electrónico"
+        required
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+
+      <input
+        type="text"
+        name="full_name"
+        placeholder="Nombre(s)"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+
+      <input
+        type="text"
+        name="last_name"
+        placeholder="Apellido(s)"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+
+      <input
+        type="text"
+        name="phone_number"
+        placeholder="Teléfono"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+
+      <input
+        type="text"
+        name="company"
+        placeholder="Empresa (opcional)"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+
+      <input
+        type="text"
+        name="job_title"
+        placeholder="Cargo (opcional)"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+      />
+
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Contraseña"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$"
+        title="Debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un símbolo."
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        required
+      />
+      <p class="text-sm text-gray-500 mt-1">
+        Mínimo 8 caracteres, incluir mayúscula, minúscula, número y símbolo.
+      </p>
+
+      <!-- Campo confirmar contraseña -->
+      <input
+        type="password"
+        name="confirm_password"
+        id="confirm_password"
+        placeholder="Confirmar contraseña"
+        class="w-full mt-3 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        required
+      />
+      <p id="password-error" class="hidden text-sm text-red-500 mt-1">
+        Las contraseñas no coinciden.
+      </p>
+
+      <div class="space-y-2 text-sm text-gray-700">
+        <label class="flex items-start space-x-2">
+          <input type="checkbox" name="accept_dpa" required class="mt-1" />
+          <span>
+            Acepto el
+            <a
+              href="/legal/dpa"
+              target="_blank"
+              class="text-green-600 hover:underline font-medium"
+              >Acuerdo de Procesamiento de Datos</a
+            >
+            y los
+            <a
+              href="/legal/terms"
+              target="_blank"
+              class="text-green-600 hover:underline font-medium"
+              >Términos del Servicio</a
+            >.
+          </span>
+        </label>
+
+        <label class="flex items-start space-x-2">
+          <input
+            type="checkbox"
+            name="accept_marketing"
+            value="yes"
+            class="mt-1"
+          />
+          <span>
+            Deseo recibir comunicaciones sobre novedades, contenido y
+            promociones.
+          </span>
+        </label>
+      </div>
+      <input type="hidden" name="g_recaptcha_response_register" id="g_recaptcha_response_register">
+      <button
+        type="submit"
+        class="w-full bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 transition"
+      >
+        Registrarse
+      </button>
+    </form>
+
+    <p class="text-center text-gray-500 text-sm mt-6">
+      ¿Ya tienes una cuenta?
+      <a href="/auth/login" class="text-green-600 hover:underline font-medium"
+        >Inicia sesión</a
+      >
+    </p>
+  </div>
+</div>
+{% endblock %}

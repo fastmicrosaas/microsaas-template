@@ -1,0 +1,128 @@
+{% extends "layouts/base.html" %} {% block content %}
+<title>{% block title %}Términos y Condiciones{% endblock %}</title>
+
+<section class="max-w-4xl mx-auto px-4 py-16 text-gray-800">
+  <h1 class="text-3xl font-bold mb-6">Términos y Condiciones</h1>
+
+  <p class="mb-4">
+    Al acceder y utilizar este sitio web, aceptas cumplir con los presentes
+    Términos y Condiciones, nuestra Política de Privacidad y demás normativas
+    aplicables. Si no estás de acuerdo con alguno de estos términos, por favor
+    no utilices nuestros servicios.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">1. Objeto del sitio</h2>
+  <p class="mb-4">
+    Este sitio proporciona información y acceso a los productos o servicios
+    ofrecidos por {{ legal.company }}. Nos reservamos el derecho de
+    modificar, suspender o interrumpir cualquier aspecto del sitio en cualquier
+    momento, con o sin previo aviso.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">2. Uso autorizado</h2>
+  <p class="mb-4">
+    Estás autorizado a usar este sitio exclusivamente para fines legales y
+    personales. Está prohibido:
+  </p>
+  <ul class="list-disc list-inside mb-4">
+    <li>Usar el sitio para actividades ilícitas o fraudulentas.</li>
+    <li>
+      Intentar acceder sin autorización a secciones restringidas del sitio.
+    </li>
+    <li>
+      Reproducir, distribuir, o modificar el contenido sin permiso previo por
+      escrito.
+    </li>
+    <li>Enviar virus, malware o cualquier otro código dañino.</li>
+  </ul>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">3. Registro y cuentas</h2>
+  <p class="mb-4">
+    Al crear una cuenta, te comprometes a proporcionar información veraz,
+    completa y actualizada. Eres responsable de mantener la confidencialidad de
+    tus credenciales de acceso y de todas las actividades que ocurran bajo tu
+    cuenta.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">4. Propiedad intelectual</h2>
+  <p class="mb-4">
+    Todos los derechos de propiedad intelectual del contenido de este sitio
+    (textos, imágenes, marcas, logotipos, código fuente, etc.) pertenecen a
+    {{ legal.company }} o a sus respectivos propietarios y están protegidos
+    por leyes nacionales e internacionales. No está permitido su uso sin
+    autorización expresa.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">5. Exclusión de garantías</h2>
+  <p class="mb-4">
+    Este sitio y el software (starter kit) se proporcionan “tal cual” y “según
+    disponibilidad”. No garantizamos que el servicio sea ininterrumpido, libre
+    de errores o seguro. No nos hacemos responsables por daños o pérdidas
+    derivadas del uso del sitio o del software, ni de la imposibilidad de
+    acceder a ellos.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">6. Enlaces a terceros</h2>
+  <p class="mb-4">
+    Este sitio puede contener enlaces a sitios de terceros. No tenemos control
+    sobre su contenido ni asumimos responsabilidad alguna por los mismos. El
+    acceso a dichos sitios es bajo tu propio riesgo.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">7. Política de reembolso</h2>
+  <p class="mb-4">
+    Debido a la naturaleza digital del producto (software starter kit) y al
+    acceso inmediato que se otorga tras la compra, <strong>no se aceptan
+    devoluciones ni reembolsos</strong>, salvo que la legislación aplicable lo
+    requiera expresamente.  
+  </p>
+  <p class="mb-4">
+    Antes de realizar la compra, el usuario es responsable de leer la
+    descripción del producto y asegurarse de que cumple con sus necesidades.
+    En caso de que la ley reconozca un derecho de desistimiento, este podrá
+    ejercerse únicamente si el software no ha sido descargado, instalado ni
+    utilizado.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">8. Descargo sobre seguridad</h2>
+  <p class="mb-4">
+    El software (starter kit) ha sido desarrollado siguiendo buenas prácticas de
+    seguridad conocidas en el momento de su publicación. Sin embargo, no se
+    garantiza que esté libre de vulnerabilidades futuras o que sea completamente
+    invulnerable a ataques.  
+  </p>
+  <p class="mb-4">
+    {{ legal.company }} no se responsabiliza por daños, pérdidas, robo de datos
+    o accesos no autorizados que puedan sufrir los proyectos o sistemas del
+    usuario después de implementar o personalizar el starter kit.
+    El usuario asume la responsabilidad de realizar las auditorías, pruebas y
+    configuraciones necesarias para proteger su implementación final.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">9. Modificaciones de los términos</h2>
+  <p class="mb-4">
+    Nos reservamos el derecho de modificar estos Términos y Condiciones en
+    cualquier momento. Cualquier cambio será publicado en esta página. Si
+    continúas utilizando el sitio tras los cambios, se entenderá que aceptas los
+    nuevos términos.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">10. Ley aplicable y jurisdicción</h2>
+  <p class="mb-4">
+    Estos términos se regirán e interpretarán de acuerdo con las leyes de {{ legal.country }}.
+    Cualquier disputa será resuelta por los tribunales competentes de dicha
+    jurisdicción.
+  </p>
+
+  <h2 class="text-xl font-semibold mt-6 mb-2">11. Contacto</h2>
+  <p class="mb-4">
+    Si tienes preguntas o inquietudes sobre estos términos, puedes contactarnos
+    a través de <a href="mailto:{{ legal.contact }}">{{ legal.contact }}</a> o
+    mediante los canales oficiales disponibles en este sitio.
+  </p>
+
+  <p class="text-sm text-gray-500 mt-10">
+    Última actualización: {{ datetime.utcnow().strftime('%d/%m/%Y') }}
+  </p>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layouts/dashboard_base.html" %}
+
+{% block title %}Órdenes{% endblock %}
+
+{% block content %}
+<div class="flex bg-gray-50 min-h-screen">
+  <!-- Sidebar -->
+  {% include "dashboard/components/sidebar.html" %}
+
+  <!-- Main Content -->
+  <main class="flex-1 p-8 mx-20">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-gray-800">Historial de Órdenes</h1>
+    </div>
+    <div id="orders-list">
+      {% include "dashboard/components/orders_list.html" %}
+    </div>
+  </main>
+</div>
+{% endblock %}

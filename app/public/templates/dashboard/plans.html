@@ -1,0 +1,72 @@
+{% extends "layouts/dashboard_base.html" %}
+{% block title %}Mi Plan{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  {% include "dashboard/components/sidebar.html" %}
+
+  <!-- Contenido principal -->
+
+    <main class="flex-1 p-8 mx-20 ">
+
+    <!-- Encabezado -->
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-gray-800">Tu plan actual</h1>
+      <p class="text-gray-600 mt-2">Consulta los detalles de tu suscripción y sus beneficios.</p>
+    </div>
+  
+    <!-- Alerta -->
+    {% if alert %}
+      <div class="mb-6 p-4 rounded-lg border border-yellow-300 bg-yellow-50 text-yellow-800 flex items-start gap-3">
+        <svg class="w-5 h-5 mt-1 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        </svg>
+        <span class="text-sm font-medium">{{ alert }}</span>
+      </div>
+    {% endif %}
+
+    <!-- Detalles del Plan -->
+    <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-8 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm text-gray-700">
+        <div class="flex flex-col gap-1">
+          <span class="text-gray-500">Nombre del plan</span>
+          <span class="font-semibold text-lg">{{ plan.name }}</span>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <span class="text-gray-500">Vigencia (días)</span>
+          <span class="font-semibold text-lg">{{ plan.validity_days }}</span>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <span class="text-gray-500">Asignado el</span>
+          <span class="font-semibold text-lg">{{ assigned_at.strftime('%d-%m-%Y') }}</span>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <span class="text-gray-500">Vence el</span>
+          <span class="font-semibold text-lg">{{ expiration_date.strftime('%d-%m-%Y') }}</span>
+        </div>
+
+        <div class="flex flex-col gap-1 sm:col-span-2">
+          <span class="text-gray-500">Días restantes</span>
+          <span class="font-semibold text-lg">{{ days_remaining }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Características del Plan -->
+    {% if features %}
+      <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Beneficios del plan</h2>
+        <ul class="list-disc list-inside space-y-3 text-base text-gray-700 pl-4">
+          {% for value in features.values() %}
+            <li>{{ value }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </main>
+</div>
+{% endblock %}

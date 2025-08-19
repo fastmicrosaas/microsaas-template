@@ -1,0 +1,12 @@
+{% block content %}
+<script src="https://www.google.com/recaptcha/api.js?render={{ RECAPTCHA_SITE_KEY }}"></script>
+<script>
+  function executeRecaptcha(action, callback) {
+    grecaptcha.ready(function () {
+      grecaptcha
+        .execute("{{ RECAPTCHA_SITE_KEY }}", { action })
+        .then(callback);
+    });
+  }
+</script>
+{% endblock %}

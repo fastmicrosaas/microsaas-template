@@ -1,0 +1,111 @@
+{% extends "layouts/base.html" %} {% block title %}Acuerdo de Procesamiento
+de Datos (DPA){% endblock %} {% block content %}
+<div class="max-w-4xl mx-auto px-6 py-16">
+  <h1 class="text-3xl font-bold mb-6">
+    Acuerdo de Procesamiento de Datos (DPA)
+  </h1>
+  <p class="text-gray-900 mb-8">
+    Este documento describe los términos bajo los cuales los proveedores
+    externos procesan datos personales en nombre de tu aplicación, inspirado en
+    el DPA de DigitalOcean. Hace parte de nuestros Términos del Servicio y es
+    vinculante desde que aceptas esos términos al utilizar el servicio.
+  </p>
+
+  <h2 class="text-2xl font-semibold mb-4">1. Alcance y Vigencia</h2>
+  <p class="text-gray-900 mb-6">
+    Este Acuerdo se aplica únicamente en la medida en que los proveedores
+    (Mailgun, Izipay, etc.) procesen datos personales en cumplimiento con leyes
+    como GDPR, CCPA o nuestra legislación local. Su vigencia coincide con la
+    duración del servicio contratado.
+  </p>
+
+  <h2 class="text-2xl font-semibold mb-4">2. Roles y Definiciones</h2>
+  <ul class="list-disc list-inside text-gray-900 mb-6">
+    <li>
+      <strong>Controlador:</strong> Tu empresa, que determina los fines y medios
+      del procesamiento.
+    </li>
+    <li>
+      <strong>Encargado:</strong> El proveedor tercero que procesa datos por tu
+      cuenta.
+    </li>
+    <li>
+      <strong>Datos Personales:</strong> Información que identifica o puede
+      identificar a una persona.
+    </li>
+  </ul>
+
+  <h2 class="text-2xl font-semibold mb-4">
+    3. Subprocesadores y Transferencias Internacionales
+  </h2>
+  <p class="text-gray-900 mb-6">
+    Cada proveedor puede utilizar subprocesadores (ej. servidores cloud, redes
+    de email). Te notificaremos y tendrás la posibilidad de oponerte dentro de
+    un plazo razonable. Las transferencias fuera de tu país se realizan bajo
+    cláusulas estándar o mecanismos legales equivalentes.
+  </p>
+
+  <h2 class="text-2xl font-semibold mb-4">
+    4. Medidas de Seguridad y Notificación de Incidentes
+  </h2>
+  <p class="text-gray-900 mb-6">
+    Todos los proveedores adoptan medidas técnicas y organizativas para proteger
+    los datos personales (como encriptación, acceso limitado, backups). En caso
+    de brecha de seguridad, deben notificarte de inmediato y colaborar para
+    mitigar el impacto.
+  </p>
+
+  <h2 class="text-2xl font-semibold mb-4">
+    5. Retención y Eliminación de Datos
+  </h2>
+  <p class="text-gray-900 mb-6">
+    Al terminar el servicio, los proveedores deben eliminar o devolver
+    permanentemente los datos según tus instrucciones, salvo retención por
+    obligaciones legales.
+  </p>
+
+  <h2 class="text-2xl font-semibold mb-4">6. Auditoría y Cumplimiento</h2>
+  <p class="text-gray-900 mb-6">
+    Podrás solicitar evidencia razonable (como reportes, certificaciones o
+    auditorías) sobre el cumplimiento de este acuerdo por parte de los
+    proveedores.
+  </p>
+
+  <!-- Tabla resumen de proveedores -->
+  <div class="overflow-x-auto rounded-lg shadow ring-1 ring-gray-700/40">
+    <table class="min-w-full bg-gray-300 text-left text-gray-900 text-sm">
+      <thead class="bg-gray-700 text-xs text-white uppercase tracking-wider">
+        <tr>
+          <th class="px-6 py-3">Proveedor</th>
+          <th class="px-6 py-3">DPA firmado</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-700">
+        {% for dpa in dpa_status %}
+        <tr class="hover:bg-gray-400 transition-colors duration-200">
+          <td class="px-6 py-4 font-medium">{{ dpa.provider }}</td>
+          <td class="px-6 py-4">
+            {% if dpa.status == 'si' %}
+            <span
+              class="inline-block px-2 py-1 bg-blue-100 text-black rounded text-xs"
+              >Sí</span
+            >
+            {% elif dpa.status == '❌' %}
+            <span
+              class="inline-block px-2 py-1 bg-red-600 text-white rounded text-xs"
+              >No</span
+            >
+            {% else %}
+            <span
+              class="inline-block px-2 py-1 bg-gray-500 text-white rounded text-xs"
+              >{{ dpa.status }}</span
+            >
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Izipay</title>
+
+  <!-- Librería JS de Izipay -->
+  <script 
+    src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js"
+    kr-public-key="{{ publickey }}"
+    kr-post-url-success="/payments/paid">
+  </script>
+
+  <!-- Tema visual de Izipay -->
+  <link rel="stylesheet" href="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic-reset.css">
+  <script src="https://static.micuentaweb.pe/static/js/krypton-client/V4.0/ext/classic.js"></script>
+
+  <!-- TailwindCSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" integrity="sha384-HtMZLkYo+pR5/u7zCzXxMJP6QoNnQJt1qkHM0EaOPvGDIzaVZbmYr/TlvUZ/sKAg" crossorigin="anonymous">
+</head>
+<body class="bg-[url('/static/img/noise22.png')] bg-repeat bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white flex items-center justify-center min-h-screen font-sans">
+
+  <!-- Detalle del plan alineado a la derecha -->
+  <div class="w-1/2 bg-[url('/static/img/noise22.png')] bg-repeat bg-gradient-to-br from-black via-gray-900 to-gray-800 flex items-start justify-end p-20 relative overflow-y-auto min-h-screen">
+    <div class="w-full max-w-md text-right flex flex-col items-end gap-4 mt-4">
+      <!-- Flecha de regreso -->
+      <a href="/" class="flex items-center text-white text-sm hover:underline self-end">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Volver
+      </a>
+
+      <h1 class="text-4xl font-bold">Plan {{ plan.name }}</h1>
+      <p class="text-lg mb-6">{{ plan.description or 'Este es el mejor plan para ti.' }}</p>
+
+      <div class="bg-white bg-opacity-20 p-6 rounded-lg shadow-inner mb-6 inline-block ml-auto">
+        <p class="text-xl font-semibold">Precio:</p>
+        <p class="text-5xl font-bold">S/ {{ plan.price / 100 }}</p>
+      </div>
+      <ul class="list-disc list-inside space-y-3 text-base text-right inline-block">
+        {% for value in features.values() %}
+          <li>{{ value }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Formulario de pago alineado a la izquierda -->
+  <div class="w-1/2 bg-white bg-opacity-90 backdrop-blur-sm flex items-start justify-start p-20 overflow-y-auto min-h-screen">
+    <div class="w-full max-w-md text-left mt-4">
+      <h2 class="text-2xl font-semibold mb-8 text-gray-800">Método de pago</h2>
+
+      <div class="kr-embedded space-y-4" kr-form-token="{{ formtoken }}">
+        <div class="kr-pan"></div>
+        <div class="kr-expiry"></div>
+        <div class="kr-security-code"></div>
+        <button class="kr-payment-button w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition">
+          Pagar S/ {{ plan.price / 100 }}
+        </button>
+        <div class="kr-form-error text-red-500 text-sm mt-2"></div>
+      </div>
+
+      <p class="text-xs text-gray-400 text-left mt-6">Pagos procesados por Izipay</p>
+    </div>
+  </div>
+</body>
+
+</html>

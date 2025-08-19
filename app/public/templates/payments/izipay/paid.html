@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pago Completado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" integrity="sha384-HtMZLkYo+pR5/u7zCzXxMJP6QoNnQJt1qkHM0EaOPvGDIzaVZbmYr/TlvUZ/sKAg" crossorigin="anonymous">
+  <script src="/static/htmx.min.js"></script>
+  <script src="/static/js/util.js"></script>
+</head>
+<body class="bg-[url('/static/img/noise22.png')] bg-repeat bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white flex items-center justify-center min-h-screen font-sans">
+
+  <div class="w-full max-w-2xl bg-[#1c1c1c] border border-gray-700 p-10 rounded-3xl shadow-2xl text-center space-y-8">
+
+    <!-- Icono de éxito -->
+    <div class="flex justify-center">
+      <div class="bg-green-600 p-4 rounded-full shadow-inner">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Título -->
+    <h1 class="text-3xl font-extrabold tracking-tight">¡Pago exitoso!</h1>
+    <p class="text-lg text-gray-300">Gracias por tu compra, tu suscripción está activa.</p>
+
+    {% if order %}
+    <p class="text-indigo-400 font-medium">Orden #{{ order.id }} actualizada correctamente.</p>
+    {% endif %}
+
+    <!-- Detalles del pago -->
+    <div class="text-left bg-[#111111] border border-gray-700 rounded-2xl p-6 space-y-4 shadow-inner">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold flex items-center gap-2 text-white">
+          <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c1.657 0 3-1.343 3-3S13.657 2 12 2 9 3.343 9 5s1.343 3 3 3zm0 0v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Detalles del pago
+        </h2>
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg shadow transition">
+          Descargar PDF
+        </button>
+      </div>
+
+      <dl class="grid grid-cols-2 gap-4 text-sm text-gray-300">
+        <div>
+          <dt class="font-medium text-gray-400">Monto</dt>
+          <dd class="text-lg font-bold text-white">S/ {{ details.orderPaidAmount / 100 }}</dd>
+        </div>
+        <div>
+          <dt class="font-medium text-gray-400">Moneda</dt>
+          <dd class="text-lg text-white">{{ details.orderCurrency }}</dd>
+        </div>
+        <div>
+          <dt class="font-medium text-gray-400">Orden ID</dt>
+          <dd class="text-lg text-white">{{ details.orderId }}</dd>
+        </div>
+        <div>
+          <dt class="font-medium text-gray-400">Modo</dt>
+          <dd class="text-lg text-white capitalize">{{ details.mode }}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Redirección -->
+    <p class="text-sm text-gray-400">
+      Serás redirigido al dashboard en <span id="countdown" class="font-semibold text-white">{{ redirect_after }}</span> segundos...
+    </p>
+
+    <a href="/dashboard" class="inline-block text-sm text-indigo-400 hover:text-indigo-300 hover:underline transition">
+      Ir ahora al Dashboard
+    </a>
+  </div>
+
+  {% if redirect_after %}
+  <script>
+    function startRedirectCountdown(seconds, url) {
+      const countdown = document.getElementById('countdown');
+      if (!countdown) return;
+      const interval = setInterval(() => {
+        seconds--;
+        countdown.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(interval);
+          window.location.href = url;
+        }
+      }, 1000);
+    }
+    window.onload = () => startRedirectCountdown(parseInt("{{ redirect_after }}"), "/dashboard");
+  </script>
+  {% endif %}
+</body>
+</html>

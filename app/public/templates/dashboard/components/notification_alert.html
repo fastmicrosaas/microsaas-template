@@ -1,0 +1,74 @@
+{% if alert %}
+<div
+  id="plan-alert"
+  class="mb-8 px-6 py-5 pr-14 border-l-8 border-red-600 bg-red-50 text-red-900 rounded-2xl shadow-xl relative transition-all duration-300"
+>
+  <!-- Botón de cerrar -->
+  <button
+    type="button"
+    class="absolute top-3 right-4 text-red-500 hover:text-red-700 text-2xl font-bold focus:outline-none"
+    onclick="this.parentElement.remove()"
+    aria-label="Cerrar alerta"
+  >
+    &times;
+  </button>
+
+  <!-- Contenido principal -->
+  <div
+    class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+  >
+    <!-- Mensaje de alerta -->
+    <div class="text-sm sm:text-base font-medium leading-relaxed">
+      <strong class="font-semibold">Atención:</strong> {{ alert }}
+    </div>
+
+    <!-- Countdown -->
+    <div class="flex items-center gap-2 mr-6">
+      <span
+        class="text-xs uppercase font-semibold text-red-700 tracking-widest"
+      >
+        Tiempo restante:
+      </span>
+      <span
+        id="countdown"
+        class="font-mono text-lg sm:text-2xl font-bold bg-red-100 text-red-800 px-3 py-1 rounded-md shadow-sm"
+      >
+        --
+      </span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const expirationDate = new Date("{{ expiration_date.isoformat() }}");
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = expirationDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").textContent = "00:00:00:00";
+      return;
+    }
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = String(Math.floor(totalSeconds / 86400)).padStart(2, "0");
+    const hours = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(
+      2,
+      "0"
+    );
+    const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(
+      2,
+      "0"
+    );
+    const seconds = String(totalSeconds % 60).padStart(2, "0");
+
+    document.getElementById(
+      "countdown"
+    ).textContent = `${days}:${hours}:${minutes}:${seconds}`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+{% endif %}

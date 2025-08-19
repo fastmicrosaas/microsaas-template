@@ -1,0 +1,18 @@
+{% extends "layouts/dashboard_base.html" %} 
+{% block title %}Items{% endblock %}
+{% block content %}
+<div class="flex">
+  <!-- Sidebar -->
+  {% include "dashboard/components/sidebar.html" %}
+
+  <!-- Main Content -->
+  <main class="flex-1 p-8 mx-20">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-gray-800">Listado de Ítems</h1>
+    </div>
+    <div id="items-list">
+      {% include "dashboard/components/items_list.html" %}
+    </div>
+  </main>
+</div>
+{% endblock %}

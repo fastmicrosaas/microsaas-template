@@ -1,0 +1,88 @@
+{% extends "layouts/dashboard_base.html" %} {% block title %}Privacidad{%
+endblock %} {% block content %}
+<div class="flex">
+  {% include "dashboard/components/sidebar.html" %}
+
+  <main class="flex-1 p-8 mx-20">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-gray-800">Privacidad</h1>
+    </div>
+   
+    <div class="space-y-8 ">
+      <!-- Descarga de datos personales -->
+      <section class="bg-white rounded-2xl shadow-lg p-8 space-y-4">
+        <h3 class="text-lg font-semibold">
+          Tus datos personales
+        </h3>
+        <p class="text-sm text-gray-500">
+          Puedes descargar una copia de tus datos personales en cualquier
+          momento.
+        </p>
+
+        <a
+          href="/dashboard/settings/export"
+          download="user_data.json"
+          class="inline-block bg-blue-100 hover:bg-blue-200 text-black px-5 py-2 rounded-lg text-sm font-semibold transition-colors duration-150"
+          aria-label="Descargar mis datos personales"
+        >
+          Descargar mis datos
+        </a>
+      </section>
+      <section class="bg-white rounded-2xl shadow-lg p-8 space-y-4 mt-6">
+        <h3 class="text-lg font-semibold ">
+          Formulario para Ejercicio de Derechos ARCO
+        </h3>
+        <p class="text-sm text-gray-500">
+          En cumplimiento con la Ley de Protección de Datos Personales, usted
+          tiene derecho a acceder, rectificar, cancelar u oponerse al
+          tratamiento de sus datos personales. Para ejercer estos derechos,
+          descargue el formulario oficial, complételo y envíelo firmado por
+          correo electrónico a la siguiente dirección:
+        </p>
+
+        <a
+          href="/static/docs/formulario_arco.pdf"
+          download
+          target="_blank"
+          class="inline-block bg-blue-100 hover:bg-blue-200 text-black px-5 py-2 rounded-lg text-sm font-semibold transition-colors duration-150"
+          aria-label="Descargar formulario para ejercicio de derechos ARCO"
+        >
+          Descargar formulario ARCO
+        </a>
+
+        <p class="mt-4 text-sm text-gray-500">
+          Su solicitud será atendida conforme a los plazos y procedimientos
+          establecidos en la normativa vigente sobre protección de datos
+          personales.
+        </p>
+
+        <p class="text-sm text-gray-500">
+          Para mayor información o consultas, puede contactarnos en:
+          <a href="mailto:datos@bundigital.com" class="text-blue-600 underline"
+            >datos@bundigital.com</a
+          >
+        </p>
+      </section>
+
+      <!-- Zona para eliminar cuenta -->
+      <section class="bg-white rounded-2xl shadow-lg p-8 space-y-6">
+        <h3 class="text-lg font-semibold text-red-600">Zona peligrosa</h3>
+        <p class="text-sm text-gray-500">
+          Esta acción eliminará tu cuenta de forma permanente. No podrás
+          recuperarla.
+        </p>
+
+        <button
+          hx-delete="/dashboard/settings/profile/delete"
+          hx-confirm="¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer."
+          class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors duration-150"
+          aria-label="Eliminar cuenta permanentemente"
+          type="button"
+        >
+          Eliminar cuenta
+        </button>
+      </section>
+    </div>
+  </main>
+</div>
+{% endblock %}
