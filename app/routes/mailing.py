@@ -10,8 +10,6 @@ from app.core.config import get_settings
 
 settings = get_settings()
 
-
-
 router = APIRouter(prefix="/mailing", tags=["Mailing"])
 
 @router.post("/contact")

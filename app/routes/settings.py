@@ -16,7 +16,7 @@ router = APIRouter(prefix="/dashboard/settings", tags=["Settings"])
 def view_profile(request: Request, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     return render_template(
         request,
-        "dashboard/profile.html",
+        "dashboard/profile/index.html",
         {
             "user": current_user,
             "edit_mode": False
@@ -27,7 +27,7 @@ def view_profile(request: Request, db: Session = Depends(get_db), current_user: 
 def edit_profile_form(request: Request, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     return render_template(
         request,
-        "dashboard/profile.html",
+        "dashboard/profile/index.html",
         {
             "user": current_user,
             "edit_mode": True

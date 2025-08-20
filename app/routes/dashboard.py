@@ -50,7 +50,7 @@ def dashboard_items_page(
 
     return render_template(
         request,
-        "dashboard/items.html",
+        "dashboard/items/index.html",
         {"items": items},
         with_csrf=True
     )
@@ -78,7 +78,7 @@ def dashboard_orders(
         .all()
     )
 
-    return render_template(request, "dashboard/orders.html", {
+    return render_template(request, "dashboard/orders/index.html", {
         "orders": orders,
         "page": page,
         "total_pages": total_pages,
@@ -89,7 +89,7 @@ def profile_page(
     request: Request,
     current_user: User = Depends(get_current_user)
 ):
-    return render_template(request, "dashboard/profile.html", {
+    return render_template(request, "dashboard/profile/index.html", {
         "user": current_user
     })
 
@@ -100,7 +100,7 @@ def profile_page(
 ):
     return render_template(
         request, 
-        "dashboard/privacy.html",  
+        "dashboard/privacy/index.html",  
         {"user": current_user},
         with_csrf= True
     )
@@ -115,7 +115,7 @@ def user_plan_page(
     if not plan_info:
         raise HTTPException(status_code=404, detail="No se encontró información del plan")
 
-    return render_template(request, "dashboard/plans.html", {
+    return render_template(request, "dashboard/plans/index.html", {
         "user": current_user,
         **plan_info
     })

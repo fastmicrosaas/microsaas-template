@@ -8,17 +8,12 @@ from app.schemas.schemas import OrderCreate, OrderOut
 
 router = APIRouter(prefix="/orders", tags=["Orders"])
 
-
-# ----------------------------
-# 1. API REST de Órdenes
-# ----------------------------
-
 @router.get("/", response_model=List[OrderOut])
 def list_orders(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    """Listar todas las órdenes del usuario logueado."""
+
     return db.query(Order).filter(Order.user_id == current_user.id).all()
 
 
@@ -28,7 +23,6 @@ def create_order(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    """Crear una nueva orden para el plan elegido."""
     plan = db.query(Plan).filter(Plan.id == order_data.plan_id).first()
     if not plan:
         raise HTTPException(

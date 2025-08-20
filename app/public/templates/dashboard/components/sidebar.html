@@ -36,18 +36,14 @@
         <span class="text-lg">💳</span><span class="ml-3">Órdenes</span>
       </a>
 
-      <!-- Submenú -->
-      <div>
-        <button
-          type="button"
-          class="flex items-center w-full px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition focus:outline-none"
-          onclick="toggleSubmenu()"
+      <details class="group">
+        <summary
+          class="flex items-center w-full px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition cursor-pointer list-none"
         >
-          <span class="text-lg">⚙️</span
-          ><span class="ml-3 font-bold">Configuración</span>
+          <span class="text-lg">⚙️</span>
+          <span class="ml-3 font-bold">Configuración</span>
           <svg
-            id="submenu-icon"
-            class="ml-auto w-4 h-4 text-gray-400 transition-transform transform"
+            class="ml-auto w-4 h-4 text-gray-400 transition-transform group-open:rotate-180"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -59,24 +55,33 @@
               d="M19 9l-7 7-7-7"
             />
           </svg>
-        </button>
-        <div id="submenu" class="ml-9 space-y-2 hidden">
-          <a
-            href="/dashboard/profile"
-            class="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition"
-          >
-            <span class="text-lg">👤</span
-            ><span class="ml-3 font-bold">Perfil</span>
-          </a>
-          <a
-            href="/dashboard/privacy"
-            class="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition"
-          >
-            <span class="text-lg">🔒</span
-            ><span class="ml-3 font-bold">Privacidad</span>
-          </a>
+        </summary>
+
+        <!-- contenedor animado -->
+        <div
+          class="overflow-hidden transition-[max-height] duration-500 ease-in-out"
+          x-data="{ open: false }"
+          x-bind:style="open ? 'max-height:500px' : 'max-height:0px'"
+          x-init="$el.parentElement.addEventListener('toggle', () => open = $el.parentElement.open)"
+        >
+          <div class="ml-9 space-y-2 mt-2 pb-2">
+            <a
+              href="/dashboard/profile"
+              class="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition"
+            >
+              <span class="text-lg">👤</span>
+              <span class="ml-3 font-bold">Perfil</span>
+            </a>
+            <a
+              href="/dashboard/privacy"
+              class="flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition"
+            >
+              <span class="text-lg">🔒</span>
+              <span class="ml-3 font-bold">Privacidad</span>
+            </a>
+          </div>
         </div>
-      </div>
+      </details>
     </nav>
   </div>
 
@@ -90,13 +95,4 @@
       ><span class="ml-3 font-bold">Cerrar sesión</span>
     </a>
   </div>
-
-  <script>
-    function toggleSubmenu() {
-      const submenu = document.getElementById("submenu");
-      const icon = document.getElementById("submenu-icon");
-      submenu.classList.toggle("hidden");
-      icon.classList.toggle("rotate-180");
-    }
-  </script>
 </aside>

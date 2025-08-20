@@ -27,7 +27,7 @@ def privacy_page(request: Request):
     legal = load_legal_info()
     return render_template(
         request,
-        "home/legal/privacy.html",
+        "home/privacy/index.html",
         {
             "datetime": datetime.datetime.utcnow(),
             **legal
@@ -40,7 +40,7 @@ def terms_page(request: Request):
     legal = load_legal_info()
     return render_template(
         request,
-        "home/legal/terms.html",
+        "home/terms/index.html",
         {
             "datetime": datetime.datetime.utcnow(),
              **legal
@@ -52,7 +52,7 @@ def terms_page(request: Request):
 def cookies_page(request: Request):
     return render_template(
         request,
-        "home/legal/cookies.html",
+        "home/cookies/index.html",
         {
             "datetime": datetime.datetime.utcnow()
         }
@@ -94,6 +94,6 @@ async def view_dpa_page(request: Request):
     ]
     return render_template(
         request,
-        "home/legal/dpa.html",
+        "home/dpa/index.html",
         {"dpa_status": dpa_status}
         )
